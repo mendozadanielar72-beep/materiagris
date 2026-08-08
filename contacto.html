@@ -56,11 +56,26 @@
             align-items: center;
         }
 
-        .logo-container {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-        }
+       /* Asegura que el logo y el texto se alienen horizontalmente y centrados */
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
+
+/* Estilo llamativo para el texto MateriaGris */
+.brand-text {
+    font-size: 1.8rem;
+    font-weight: 800;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    letter-spacing: -0.5px;
+    /* Degradado llamativo (puedes ajustar los colores según tu paleta) */
+    background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+}
 
         .logo-container img {
             height: 56px;
@@ -230,20 +245,21 @@
 </head>
 <body>
 
-    <header>
-        <div class="container nav-wrapper">
-            <a href="index.html" class="logo-container">
-                <img src="logo-materiagris.png" alt="MateriaGris" width="200" height="80" />
-            </a>
-            <nav class="nav-links">
-                <a href="index.html" class="nav-link">Inicio</a>
-                <a href="beneficios.html" class="nav-link">Beneficios</a>
-                <a href="stack.html" class="nav-link">Stack Tecnológico</a>
-                <a href="servicios.html" class="nav-link">Servicios</a>
-                <a href="contacto.html" class="nav-link active">Contacto</a>
-            </nav>
-        </div>
-    </header>
+   <header>
+    <div class="container nav-wrapper">
+        <a href="index.html" class="logo-container">
+            <img src="logo-materiagris.png" alt="MateriaGris" width="200" height="80" />
+            <span class="brand-text">MateriaGris</span>
+        </a>
+        <nav class="nav-links">
+            <a href="index.html" class="nav-link">Inicio</a>
+            <a href="beneficios.html" class="nav-link">Beneficios</a>
+            <a href="stack.html" class="nav-link">Stack Tecnológico</a>
+            <a href="servicios.html" class="nav-link">Servicios</a>
+            <a href="contacto.html" class="nav-link active">Contacto</a>
+        </nav>
+    </div>
+</header>
 
     <main class="contact-page">
         <div class="container">
