@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soluciones Técnicas y Alcance - MateriaGris</title>
+    <link rel="icon" type="image/png" href="logo-materiagris.png">
+    <link rel="preload" as="image" href="logo-materiagris.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg-main: #0f172a;
+            --bg-card: #1e293b;
+            --bg-card-hover: #2a3a52;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+            --border: #334155;
+            --max-width: 1140px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header / Navbar */
+        header {
+            border-bottom: 1px solid var(--border);
+            padding: 12px 0;
+            position: sticky;
+            top: 0;
+            background-color: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(8px);
+            z-index: 100;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-container img {
+            height: 56px;
+            width: auto;
+            display: block;
+            image-rendering: -webkit-optimize-contrast;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .logo-container:hover img {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 12px rgba(56, 189, 248, 0.5));
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nav-link:hover { color: var(--accent); }
+        .nav-link.active { color: var(--accent); }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(56, 189, 248, 0.1);
+            color: #ffffff;
+        }
+
+        /* Page Title */
+        .page-header {
+            padding: 64px 0 32px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .page-header p {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        /* Services Detail Grid */
+        .section { padding: 48px 0 80px; }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+        }
+
+        .service-card {
+            background-color: var(--bg-card);
+            border: 2px solid var(--border);
+            padding: 36px 28px;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.25s ease;
+        }
+
+        .service-card:hover {
+            border-color: var(--accent);
+            background-color: var(--bg-card-hover);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px -6px rgba(56, 189, 248, 0.25);
+        }
+
+        .service-icon {
+            width: 52px;
+            height: 52px;
+            background-color: rgba(56, 189, 248, 0.1);
+            color: var(--accent);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .service-card h2 {
+            font-size: 1.35rem;
+            color: var(--text-main);
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.975rem;
+            margin-bottom: 24px;
+            flex-grow: 1;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tech-tags span {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent);
+            background-color: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border);
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+
+        /* CTA Box */
+        .cta-box {
+            margin-top: 64px;
+            background: linear-gradient(135deg, var(--bg-card) 0%, #0f172a 100%);
+            border: 2px solid var(--border);
+            padding: 40px;
+            border-radius: 16px;
+            text-align: center;
+        }
+
+        .cta-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: var(--text-main);
+        }
+
+        .cta-box p {
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+
+        footer {
+            padding: 32px 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            border-top: 1px solid var(--border);
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 2rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <a href="index.html" class="logo-container">
+                <img src="logo-materiagris.png" alt="MateriaGris - Tecnología Aplicada" width="200" height="80" />
+            </a>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-link">Inicio</a>
+                <a href="beneficios.html" class="nav-link">Beneficios</a>
+                <a href="stack.html" class="nav-link">Stack Tecnológico</a>
+                <a href="servicios.html" class="nav-link active">Servicios</a>
+                <a href="index.html#contacto" class="btn">Agendar Diagnóstico</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Alcance y Soluciones Técnicas</h1>
+                <p>Especialización en migración de arquitecturas legacy, desarrollo de APIs robustas y extensiones móviles para software de gestión.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="services-grid">
+                    
+                    <div class="service-card">
+                        <div>
+                            <div class="service-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45L4 16"/><path d="M12 12v4"/></svg>
+                            </div>
+                            <h2>Modernización Legacy a Web</h2>
+                            <p>Transformación de sistemas de escritorio (Java/Swing u otros) a web. Migración de ventanas a controladores REST y vistas web sin interrumpir la operación actual.</p>
+                        </div>
+                        <div class="tech-tags">
+                            <span>Spring Boot</span>
+                            <span>Java</span>
+                            <span>HTML5 / JS</span>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <div>
+                            <div class="service-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg>
+                            </div>
+                            <h2>APIs REST & Integración de Datos</h2>
+                            <p>Construcción de capas backend seguras y de alta performance. Exposición de datos existentes para consumo de terceros o integración entre plataformas.</p>
+                        </div>
+                        <div class="tech-tags">
+                            <span>REST APIs</span>
+                            <span>MySQL</span>
+                            <span>Linux VPS</span>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <div>
+                            <div class="service-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
+                            </div>
+                            <h2>Módulos Móviles de Consulta</h2>
+                            <p>Desarrollo de aplicaciones móviles livianas enfocadas en la consulta rápida de datos operativos en tiempo real para personal fuera de la oficina.</p>
+                        </div>
+                        <div class="tech-tags">
+                            <span>React Native</span>
+                            <span>Expo</span>
+                            <span>Mobile Query</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- CTA Banner -->
+                <div class="cta-box">
+                    <h3>¿Querés evaluar la viabilidad de tu sistema actual?</h3>
+                    <p>Revisamos tu arquitectura y base de datos sin compromiso para definir la mejor estrategia de migración.</p>
+                    <a href="index.html#contacto" class="btn">Solicitar Prototipo MVP</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 MateriaGris. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MateriaGris - Modernización y Migración de Sistemas Legacy a la Web</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="logo-materiagris.png">
+    
+    <!-- Preload del logo -->
+    <link rel="preload" as="image" href="logo-materiagris.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg-main: #0f172a;
+            --bg-card: #1e293b;
+            --bg-card-hover: #2a3a52;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+            --border: #334155;
+            --max-width: 1140px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header / Navbar */
+        header {
+            border-bottom: 1px solid var(--border);
+            padding: 12px 0;
+            position: sticky;
+            top: 0;
+            background-color: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(8px);
+            z-index: 100;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-container img {
+            height: 56px;
+            width: auto;
+            display: block;
+            image-rendering: -webkit-optimize-contrast;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .logo-container:hover img {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 12px rgba(56, 189, 248, 0.5));
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--accent);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(56, 189, 248, 0.1);
+            color: #ffffff;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 96px 0 64px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.75rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 780px;
+            margin: 0 auto 36px;
+        }
+
+        .sub-cta {
+            display: block;
+            margin-top: 12px;
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        /* General Section */
+        .section {
+            padding: 80px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 48px;
+            letter-spacing: -0.5px;
+        }
+
+        .grid-2x2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border: 2px solid var(--border);
+            padding: 32px;
+            border-radius: 12px;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            display: block;
+        }
+
+        .card:hover {
+            border: 2px solid var(--accent);
+            background-color: var(--bg-card-hover);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px -6px rgba(56, 189, 248, 0.25);
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+            color: var(--accent);
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.975rem;
+        }
+
+        /* Process Section */
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        .step-number {
+            display: inline-block;
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: var(--accent);
+            background-color: rgba(56, 189, 248, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+        }
+
+        .card:hover .step-number {
+            background-color: var(--accent);
+            color: #0f172a;
+        }
+
+        /* Proof / Case Study */
+        .case-box {
+            background: linear-gradient(135deg, var(--bg-card) 0%, #0f172a 100%);
+            border: 2px solid var(--border);
+            padding: 40px;
+            border-radius: 16px;
+            border-left: 6px solid var(--accent);
+            transition: all 0.25s ease;
+        }
+
+        .case-box p {
+            font-size: 1.1rem;
+            color: var(--text-main);
+            font-style: italic;
+        }
+
+        /* Center Link Container */
+        .center-action {
+            text-align: center;
+            margin-top: 48px;
+        }
+
+        /* Footer CTA */
+        .cta-section {
+            text-align: center;
+            padding: 96px 0;
+            background-color: var(--bg-card);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .cta-section h2 {
+            font-size: 2.25rem;
+            margin-bottom: 16px;
+        }
+
+        .cta-section p {
+            color: var(--text-muted);
+            margin-bottom: 32px;
+            font-size: 1.1rem;
+        }
+
+        footer {
+            padding: 32px 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1rem; }
+            .section-title { font-size: 1.5rem; }
+            .nav-links { display: none; }
+        }
+
+        /* CTA Final simplificado */
+.cta-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, var(--bg-card) 0%, #0f172a 100%);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    text-align: center;
+}
+
+.cta-content {
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+.cta-content h2 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--text-main);
+}
+
+.cta-content p {
+    color: var(--text-muted);
+    font-size: 1.15rem;
+    margin-bottom: 32px;
+    line-height: 1.6;
+}
+
+.btn-large {
+    padding: 14px 28px;
+    font-size: 1.05rem;
+}
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="container nav-wrapper">
+            <a href="index.html" class="logo-container">
+                <img src="logo-materiagris.png" alt="MateriaGris - Tecnología Aplicada" width="200" height="80" />
+            </a>
+            <nav class="nav-links">
+    <a href="index.html" class="nav-link active">Inicio</a>
+    <a href="beneficios.html" class="nav-link">Beneficios</a>
+    <a href="stack.html" class="nav-link">Stack Tecnológico</a>
+    <a href="servicios.html" class="nav-link">Servicios</a>
+    <a href="contacto.html" class="nav-link">Contacto</a>
+    <a href="contacto.html" class="btn">Agendar Diagnóstico</a>
+</nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Transformamos tu sistema de escritorio en una plataforma web moderna y segura</h1>
+            <p>Migramos la lógica de negocio y la base de datos de tus aplicaciones <em>legacy</em> a la web sin interrumpir la operación diaria de tu empresa.</p>
+            <a href="#contacto" class="btn">Agendar Diagnóstico Gratuito</a>
+            <span class="sub-cta">Evalúa la factibilidad técnica de tu sistema en 15 minutos.</span>
+        </div>
+    </section>
+
+    <!-- Accesos Rápidos a Páginas Secundarias -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Explora nuestra propuesta técnica y de valor</h2>
+            <div class="grid-2x2">
+                <a href="beneficios.html" class="card">
+                    <h3>Beneficios Clave &rarr;</h3>
+                    <p>Descubre cómo optimizar el rendimiento, asegurar la integridad de tus datos y habilitar el acceso remoto seguro.</p>
+                </a>
+                <a href="stack.html" class="card">
+                    <h3>Stack Tecnológico &rarr;</h3>
+                    <p>Conoce las herramientas y tecnologías (Spring Boot, MySQL, HTML5/JS, Linux VPS) que garantizan un sistema robusto.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">¿Tu software de gestión se convirtió en el freno de tu crecimiento?</h2>
+            <div class="grid-2x2">
+                <div class="card">
+                    <h3>Inaccesibilidad Remota</h3>
+                    <p>Tu equipo depende de estar presente en la oficina o conectado a VPNs lentas e inestables para operar.</p>
+                </div>
+                <div class="card">
+                    <h3>Costos e Ineficiencia</h3>
+                    <p>Mantenimiento complejo, servidores locales costosos y riesgo constante de pérdida de información.</p>
+                </div>
+                <div class="card">
+                    <h3>Límites de Integración</h3>
+                    <p>Dificultad para conectar tu sistema actual con nuevas herramientas web, APIs, firmas digitales o apps móviles.</p>
+                </div>
+                <div class="card">
+                    <h3>Riesgo de Obsolescencia</h3>
+                    <p>Dificultad para encontrar profesionales que mantengan código antiguo o tecnologías sin soporte actual.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Un camino claro desde el sistema actual hasta la nube</h2>
+            <div class="process-steps">
+                <div class="card">
+                    <span class="step-number">Paso 1</span>
+                    <h3>Auditoría & Prototipo Express (MVP)</h3>
+                    <p>Analizamos la arquitectura actual y la base de datos. En 2 a 3 semanas te mostramos las primeras pantallas clave del sistema funcionando en web con tus datos de prueba. Validamos antes de escalar.</p>
+                </div>
+                <div class="card">
+                    <span class="step-number">Paso 2</span>
+                    <h3>Migración de Capa de Datos & Backend</h3>
+                    <p>Desarrollamos las APIs REST en Spring Boot, asegurando que todos los cálculos, reglas de negocio y consultas de base de datos operen con absoluta exactitud y mayor velocidad.</p>
+                </div>
+                <div class="card">
+                    <span class="step-number">Paso 3</span>
+                    <h3>Interfaz Web & Despliegue</h3>
+                    <p>Diseñamos una interfaz web ágil e intuitiva. Configuramos la infraestructura del servidor (VPS Linux), realizamos pruebas de carga e implementamos el sistema listo para producción.</p>
+                </div>
+            </div>
+
+            <!-- Acceso a Servicios Técnicos -->
+            <div class="center-action">
+                <a href="servicios.html" class="btn btn-outline">
+                    Conocé la arquitectura y el alcance técnico completo &rarr;
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proof Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Experiencia técnica comprobada en sistemas críticos</h2>
+            <div class="case-box">
+                <p>“Migración exitosa de un sistema integral de gestión de seguros desde arquitectura de escritorio a entorno web y móvil, manteniendo la integridad de las reglas del negocio, reduciendo tiempos de consulta y habilitando el acceso remoto seguro a bases de datos operativas.”</p>
+            </div>
+        </div>
+    </section>
+
+   <!-- Banner CTA a Contacto -->
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-content">
+            <h2>¿Listo para modernizar tu arquitectura actual?</h2>
+            <p>Evaluamos la factibilidad técnica y estrategia de migración de tu software en una sesión de diagnóstico sin cargo.</p>
+            <a href="contacto.html" class="btn btn-large">Solicitar Diagnóstico Técnico</a>
+        </div>
+    </div>
+</section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 MateriaGris. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

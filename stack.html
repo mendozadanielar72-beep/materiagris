@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stack Tecnológico | MateriaGris</title>
+    
+    <link rel="icon" type="image/png" href="logo-materiagris.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg-main: #0f172a;
+            --bg-card: #1e293b;
+            --bg-card-hover: #2a3a52;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+            --border: #334155;
+            --max-width: 1140px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header / Navbar */
+        header {
+            border-bottom: 1px solid var(--border);
+            padding: 12px 0;
+            position: sticky;
+            top: 0;
+            background-color: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(8px);
+            z-index: 100;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container img {
+            height: 56px;
+            width: auto;
+            display: block;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .logo-container:hover img {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 12px rgba(56, 189, 248, 0.5));
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--accent);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(56, 189, 248, 0.1);
+            color: #ffffff;
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: 80px 0 48px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+
+        .page-header p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        /* Stack Grid & Badges */
+        .stack-section {
+            padding: 40px 0 80px;
+        }
+
+        .grid-2x2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border: 2px solid var(--border);
+            padding: 32px;
+            border-radius: 12px;
+            transition: all 0.25s ease;
+        }
+
+        .card:hover {
+            border-color: var(--accent);
+            background-color: var(--bg-card-hover);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px -6px rgba(56, 189, 248, 0.25);
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+            color: var(--accent);
+        }
+
+        .badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .badge {
+            background-color: rgba(56, 189, 248, 0.1);
+            color: var(--accent);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.975rem;
+        }
+
+        footer {
+            padding: 32px 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            border-top: 1px solid var(--border);
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 2rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="container nav-wrapper">
+            <a href="index.html" class="logo-container">
+                <img src="logo-materiagris.png" alt="MateriaGris - Tecnología Aplicada" width="200" height="80" />
+            </a>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-link">Inicio</a>
+                <a href="beneficios.html" class="nav-link">Beneficios</a>
+                <a href="stack.html" class="nav-link active">Stack Tecnológico</a>
+                <a href="servicios.html" class="btn btn-outline">Ver Solución & Servicios</a>
+                <a href="index.html#contacto" class="btn">Agendar Diagnóstico</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Title -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Solidez e Infraestructura Técnica</h1>
+            <p>Aprovechamos herramientas probadas en la industria para construir software rápido, seguro y escalable.</p>
+        </div>
+    </section>
+
+    <!-- Stack Grid Section -->
+    <section class="stack-section">
+        <div class="container">
+            <div class="grid-2x2">
+                <!-- Tarjeta 1 -->
+                <div class="card">
+                    <h3>Backend & API</h3>
+                    <div class="badges">
+                        <span class="badge">Spring Boot</span>
+                        <span class="badge">Java</span>
+                        <span class="badge">REST APIs</span>
+                    </div>
+                    <p>Arquitectura desacoplada para garantizar alta disponibilidad, seguridad estricta y mantenimiento simple a largo plazo.</p>
+                </div>
+
+                <!-- Tarjeta 2 -->
+                <div class="card">
+                    <h3>Bases de Datos & Persistencia</h3>
+                    <div class="badges">
+                        <span class="badge">MySQL</span>
+                        <span class="badge">PostgreSQL</span>
+                    </div>
+                    <p>Consultas optimizadas y migración intacta de modelos relacionales de datos sin pérdida de registros.</p>
+                </div>
+
+                <!-- Tarjeta 3 -->
+                <div class="card">
+                    <h3>Frontend & Interfaz</h3>
+                    <div class="badges">
+                        <span class="badge">HTML5</span>
+                        <span class="badge">Modern CSS</span>
+                        <span class="badge">JavaScript</span>
+                    </div>
+                    <p>Interfaces web livianas, altamente responsivas, veloces y enfocadas en la usabilidad.</p>
+                </div>
+
+                <!-- Tarjeta 4 -->
+                <div class="card">
+                    <h3>Móvil & Despliegue</h3>
+                    <div class="badges">
+                        <span class="badge">React Native / Expo</span>
+                        <span class="badge">VPS Linux</span>
+                    </div>
+                    <p>Aplicaciones móviles de consulta rápida y servidores dedicados configurados para máxima seguridad y disponibilidad.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 MateriaGris. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
