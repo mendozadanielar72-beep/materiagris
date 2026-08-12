@@ -124,38 +124,59 @@
         }
 
         /* Media Queries para Tablets y Móviles */
-        @media (max-width: 900px) {
-            .menu-toggle {
-                display: block;
-            }
+      @media (max-width: 900px) {
+    /* Evita que el header desborde la pantalla */
+    .nav-wrapper {
+        position: relative;
+        width: 100%;
+    }
 
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background-color: var(--bg-card);
-                border: 1px solid var(--border);
-                border-radius: 12px;
-                padding: 20px;
-                margin-top: 10px;
-                box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-                gap: 16px;
-                align-items: flex-start;
-            }
+    .menu-toggle {
+        display: block;
+        background: none;
+        border: none;
+        color: var(--text-main);
+        font-size: 1.8rem;
+        cursor: pointer;
+        padding: 4px 8px;
+        z-index: 101; /* Queda por encima del menú desplegable */
+    }
 
-            .nav-links.active {
-                display: flex;
-            }
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: calc(100% + 12px);
+        left: 0;
+        right: 0;
+        width: 100%; /* Garantiza que no exceda el contenedor del header */
+        box-sizing: border-box; /* Incluye el padding en el ancho total */
+        background-color: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 16px 20px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        gap: 12px;
+        align-items: flex-start;
+        z-index: 100;
+    }
 
-            .nav-link {
-                font-size: 1rem;
-                width: 100%;
-                padding: 6px 0;
-            }
-        }
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-link {
+        font-size: 1rem;
+        width: 100%;
+        padding: 8px 0;
+        display: block;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .nav-link:last-child {
+        border-bottom: none;
+    }
+}
 
         .btn {
             display: inline-block;
@@ -422,6 +443,68 @@
                 grid-template-columns: 1fr;
             }
         }
+        /* Prevenir desbordamiento horizontal general */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Ajustes del contenedor del carrusel */
+.visual-showcase {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    padding: 12px; /* Reducido para pantallas pequeñas */
+}
+
+.carousel-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.carousel-slider {
+    display: flex;
+    width: 100%;
+    transition: transform 0.3s ease-in-out;
+}
+
+.carousel-slide {
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    flex-shrink: 0; /* Evita que los slides se deformen */
+    box-sizing: border-box;
+}
+
+.screen-img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain; /* Garantiza que la captura se escale completa */
+}
+
+/* Adaptación responsive para celulares */
+@media (max-width: 600px) {
+    .container {
+        padding: 0 12px;
+    }
+
+    .case-body {
+        padding: 16px;
+        gap: 20px;
+    }
+
+    .carousel-btn {
+        display: none; /* Oculta flechas en móvil para no cortar la imagen */
+    }
+
+    .carousel-dots {
+        margin-top: 16px;
+    }
+}
     </style>
 </head>
 <body>
@@ -594,14 +677,21 @@
             updateCarousel();
         }
 
-        function updateCarousel() {
-            if (!slider || slides.length === 0) return;
-            slider.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
-            const dots = document.querySelectorAll('.dot-indicator');
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentSlideIndex);
-            });
-        }
+     function updateCarousel() {
+    if (!slider || slides.length === 0) return;
+    
+    // Calcula el ancho exacto del contenedor en ese instante
+    const slideWidth = slider.clientWidth;
+    slider.style.transform = `translateX(-${currentSlideIndex * slideWidth}px)`;
+    
+    const dots = document.querySelectorAll('.dot-indicator');
+    dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentSlideIndex);
+    });
+}
+
+// Recalcula la posición al redimensionar la pantalla o rotar el celular
+window.addEventListener('resize', updateCarousel);
 
         function moveSlide(direction) {
             if (slides.length === 0) return;
@@ -649,6 +739,22 @@
                 menuToggle.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
             });
         }
+
+        // Cerrar menú si se toca cualquier opción
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            menuToggle.textContent = '☰';
+        });
+    });
+
+    // Cerrar menú si el usuario toca fuera de la navegación
+    document.addEventListener('click', (e) => {
+        if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
+            navLinks.classList.remove('active');
+            menuToggle.textContent = '☰';
+        }
+    });
 
         document.addEventListener('DOMContentLoaded', initCarousel);
     </script>
