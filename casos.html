@@ -2,13 +2,10 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Casos de Estudio - MateriaGris</title>
     
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="logo-materiagris.png">
-    
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -19,7 +16,6 @@
             --primary-hover: #1d4ed8;
             --bg-main: #0f172a;
             --bg-card: #1e293b;
-            --bg-card-hover: #2a3a52;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --accent: #38bdf8;
@@ -27,33 +23,32 @@
             --max-width: 1140px;
         }
 
-        html, body {
-            max-width: 100%;
-            overflow-x: hidden;
-        }
-
-        * {
+        /* Bloqueo estricto de desbordamiento horizontal */
+        *, *::before, *::after {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
-        body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        html, body {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden !important;
             background-color: var(--bg-main);
             color: var(--text-main);
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
             line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
         }
 
         .container {
             max-width: var(--max-width);
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 16px;
             width: 100%;
+            box-sizing: border-box;
         }
 
-        /* Header / Navbar Corregido */
+        /* Header Navigation */
         header {
             border-bottom: 1px solid var(--border);
             padding: 12px 0;
@@ -62,13 +57,13 @@
             background-color: rgba(15, 23, 42, 0.95);
             backdrop-filter: blur(8px);
             z-index: 100;
+            width: 100%;
         }
 
         .nav-wrapper {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: relative;
             width: 100%;
         }
 
@@ -80,15 +75,14 @@
         }
 
         .logo-container img {
-            height: 42px;
+            height: 36px;
             width: auto;
             display: block;
         }
 
         .brand-text {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 800;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             letter-spacing: -0.5px;
             background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
             -webkit-background-clip: text;
@@ -96,7 +90,6 @@
             text-transform: uppercase;
         }
 
-        /* Links de navegación */
         .nav-links {
             display: flex;
             gap: 18px;
@@ -109,11 +102,8 @@
             text-decoration: none;
             font-size: 0.9rem;
             font-weight: 500;
-            white-space: nowrap;
-            transition: color 0.2s ease;
         }
 
-        .nav-link:hover,
         .nav-link.active {
             color: var(--accent);
         }
@@ -122,106 +112,63 @@
             display: none;
         }
 
-        /* Media Queries para Tablets y Móviles */
         @media (max-width: 900px) {
             .menu-toggle {
                 display: block;
                 background: none;
                 border: none;
                 color: var(--text-main);
-                font-size: 1.8rem;
+                font-size: 1.6rem;
                 cursor: pointer;
-                padding: 4px 8px;
-                z-index: 101;
             }
 
             .nav-links {
                 display: none;
                 flex-direction: column;
                 position: absolute;
-                top: calc(100% + 12px);
+                top: 100%;
                 left: 0;
                 right: 0;
-                width: 100%;
-                box-sizing: border-box;
                 background-color: var(--bg-card);
-                border: 1px solid var(--border);
-                border-radius: 12px;
-                padding: 16px 20px;
-                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+                border-bottom: 1px solid var(--border);
+                padding: 16px;
                 gap: 12px;
-                align-items: flex-start;
-                z-index: 100;
             }
 
             .nav-links.active {
                 display: flex;
             }
-
-            .nav-link {
-                font-size: 1rem;
-                width: 100%;
-                padding: 8px 0;
-                display: block;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            }
-
-            .nav-link:last-child {
-                border-bottom: none;
-            }
         }
 
-        .btn {
-            display: inline-block;
-            background-color: var(--primary);
-            color: #ffffff;
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.2s ease;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            background-color: var(--primary-hover);
-            transform: translateY(-1px);
-        }
-
-        /* Hero Casos */
+        /* Page Layout */
         .page-header {
-            padding: 60px 0 30px;
+            padding: 40px 0 20px;
             text-align: center;
         }
 
         .page-header h1 {
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             font-weight: 800;
-            margin-bottom: 16px;
-            letter-spacing: -0.5px;
-            word-wrap: break-word;
+            word-break: break-word;
         }
 
         .page-header p {
-            font-size: 1.05rem;
+            font-size: 0.95rem;
             color: var(--text-muted);
-            max-width: 700px;
-            margin: 0 auto;
+            margin-top: 8px;
         }
 
-        /* Case Detail Card */
         .case-card {
             background-color: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 16px;
-            overflow: hidden;
-            margin-bottom: 48px;
+            border-radius: 12px;
+            margin-bottom: 40px;
             width: 100%;
+            overflow: hidden;
         }
 
         .case-header {
-            padding: 24px;
+            padding: 20px;
             border-bottom: 1px solid var(--border);
         }
 
@@ -229,106 +176,125 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 600;
             color: #38bdf8;
             background: rgba(56, 189, 248, 0.1);
             border: 1px solid rgba(56, 189, 248, 0.3);
-            padding: 6px 12px;
+            padding: 4px 10px;
             border-radius: 20px;
-            max-width: 100%;
-            white-space: normal;
         }
 
         .pulse-dot {
-            width: 8px;
-            height: 8px;
+            width: 6px;
+            height: 6px;
             background-color: var(--accent);
             border-radius: 50%;
-            box-shadow: 0 0 8px var(--accent);
-            flex-shrink: 0;
         }
 
         .case-title {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 700;
-            margin-top: 12px;
-            color: var(--text-main);
-            word-wrap: break-word;
+            margin-top: 10px;
+            word-break: break-word;
         }
 
         .case-body {
-            padding: 24px;
+            padding: 20px;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 32px;
+            gap: 24px;
+        }
+
+        @media (max-width: 868px) {
+            .case-body {
+                grid-template-columns: 1fr;
+                padding: 16px;
+            }
         }
 
         .case-info h3 {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: var(--accent);
-            margin-bottom: 12px;
+            margin: 16px 0 6px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
         .case-info p {
             color: var(--text-muted);
-            margin-bottom: 24px;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
 
         .tech-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 24px;
+            gap: 6px;
+            margin-top: 8px;
         }
 
         .tech-tag {
             background-color: #0f172a;
             border: 1px solid var(--border);
-            color: var(--text-main);
-            padding: 4px 12px;
-            border-radius: 6px;
-            font-size: 0.85rem;
-            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.78rem;
         }
 
-        /* Mockup / Screenshots Grid */
+        /* VISUAL SHOWCASE & CAROUSEL (Corrección estructural) */
         .visual-showcase {
             background-color: #0f172a;
             border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 16px;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
+            border-radius: 10px;
+            padding: 12px;
             width: 100%;
             max-width: 100%;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        .carousel-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+            overflow: hidden;
+            border-radius: 6px;
+        }
+
+        .carousel-slider {
+            display: flex;
+            width: 100%;
+            transition: transform 0.3s ease-in-out;
+            will-change: transform;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            width: 100%;
+            max-width: 100%;
+            flex-shrink: 0;
             box-sizing: border-box;
         }
 
         .screen-container {
             border: 1px solid var(--border);
-            border-radius: 8px;
+            border-radius: 6px;
             overflow: hidden;
             background-color: var(--bg-card);
             width: 100%;
+            max-width: 100%;
         }
 
         .screen-topbar {
             background-color: #1e293b;
-            padding: 8px 12px;
+            padding: 6px 10px;
             display: flex;
-            align-items: center;
-            gap: 6px;
+            gap: 5px;
             border-bottom: 1px solid var(--border);
         }
 
         .dot {
-            width: 10px;
-            height: 10px;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
             background-color: #334155;
         }
@@ -337,38 +303,10 @@
             width: 100%;
             max-width: 100%;
             height: auto;
-            display: block;
+            max-height: 380px;
             object-fit: contain;
-        }
-
-        .privacy-note {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            font-style: italic;
-            text-align: center;
-            margin-top: 8px;
-        }
-
-        /* Carrusel Corregido */
-        .carousel-wrapper {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-            border-radius: 8px;
-        }
-
-        .carousel-slider {
-            display: flex;
-            transition: transform 0.3s ease-in-out;
-            width: 100%;
-        }
-
-        .carousel-slide {
-            width: 100%;
-            min-width: 100%;
-            max-width: 100%;
-            flex-shrink: 0;
-            box-sizing: border-box;
+            display: block;
+            background-color: #090d16;
         }
 
         .carousel-btn {
@@ -378,10 +316,10 @@
             background-color: rgba(15, 23, 42, 0.85);
             border: 1px solid var(--border);
             color: var(--accent);
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
-            font-size: 1.2rem;
+            font-size: 1rem;
             cursor: pointer;
             z-index: 10;
             display: flex;
@@ -389,20 +327,20 @@
             justify-content: center;
         }
 
-        .prev-btn { left: 10px; }
-        .next-btn { right: 10px; }
+        .prev-btn { left: 8px; }
+        .next-btn { right: 8px; }
 
         .carousel-dots {
             display: flex;
             justify-content: center;
-            gap: 8px;
-            margin-top: 12px;
+            gap: 6px;
+            margin-top: 10px;
             flex-wrap: wrap;
         }
 
         .dot-indicator {
-            width: 10px;
-            height: 10px;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
             background-color: var(--border);
             cursor: pointer;
@@ -410,61 +348,51 @@
 
         .dot-indicator.active {
             background-color: var(--accent);
-            transform: scale(1.2);
         }
 
-        /* Adaptación responsive para pantallas pequeñas */
-        @media (max-width: 868px) {
-            .container {
-                padding: 0 16px;
-            }
+        .privacy-note {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-align: center;
+            margin-top: 8px;
+        }
 
-            .case-body {
-                grid-template-columns: 1fr;
-                padding: 16px;
-                gap: 24px;
-            }
-
-            .case-header {
-                padding: 16px;
-            }
-
-            .page-header h1 {
-                font-size: 1.8rem;
-            }
-
-            .carousel-btn {
-                display: none; /* En móvil se utiliza deslizamiento por gesto táctil o puntos */
-            }
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: #ffffff;
+            padding: 10px 18px;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.9rem;
         }
 
         .cta-section {
-            padding: 60px 0;
-            background: linear-gradient(135deg, var(--bg-card) 0%, #0f172a 100%);
-            border-top: 1px solid var(--border);
+            padding: 40px 0;
+            background: var(--bg-card);
             text-align: center;
+            border-top: 1px solid var(--border);
         }
 
         footer {
-            padding: 32px 0;
+            padding: 20px 0;
             text-align: center;
             color: var(--text-muted);
-            font-size: 0.875rem;
-            border-top: 1px solid var(--border);
+            font-size: 0.8rem;
         }
     </style>
 </head>
 <body>
 
-    <!-- Header Navigation -->
     <header>
         <div class="container nav-wrapper">
             <a href="index.html" class="logo-container">
-                <img src="logo-materiagris.png" alt="MateriaGris" width="150" height="42" />
+                <img src="logo-materiagris.png" alt="MateriaGris">
                 <span class="brand-text">MateriaGris</span>
             </a>
 
-            <button class="menu-toggle" id="menuToggle" aria-label="Abrir Menú">☰</button>
+            <button class="menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
 
             <nav class="nav-links" id="navLinks">
                 <a href="index.html" class="nav-link">Inicio</a>
@@ -477,125 +405,91 @@
         </div>
     </header>
 
-    <!-- Main Content -->
     <main class="container">
         <section class="page-header">
             <h1>Casos de Estudio & Proyectos</h1>
-            <p>Conoce de cerca cómo transformamos aplicaciones de escritorio tradicionales en soluciones web y móviles de alto rendimiento.</p>
+            <p>Transformación de sistemas de escritorio a soluciones web y móviles.</p>
         </section>
 
-        <!-- Case Study Card -->
         <article class="case-card">
             <div class="case-header">
-                <div>
-                    <span class="badge-status">
-                        <span class="pulse-dot"></span> Proyecto en Desarrollo / Fase Final
-                    </span>
-                    <h2 class="case-title">Modernización de Sistema de Gestión de Seguros & App Móvil</h2>
-                </div>
+                <span class="badge-status"><span class="pulse-dot"></span> Proyecto en Desarrollo / Fase Final</span>
+                <h2 class="case-title">Modernización de Sistema de Gestión de Seguros & App Móvil</h2>
             </div>
 
             <div class="case-body">
-                <!-- Columna Izquierda -->
                 <div class="case-info">
                     <h3>El Desafío Técnico</h3>
-                    <p>Migrar un sistema de escritorio integral de seguros a un entorno web accesible desde navegador y dispositivo móvil. El reto principal consistía en conservar las complejas reglas del negocio y permitir consultas veloces a una base de datos relacional de gran volumen sin interrumpir la operación.</p>
+                    <p>Migrar un sistema de escritorio a un entorno web y móvil optimizado, manteniendo reglas de negocio complejas sin interrumpir operaciones.</p>
 
-                    <h3>La Solución Integrada</h3>
-                    <p>Diseño de una arquitectura limpia separando el backend mediante una API REST en Spring Boot y un frontend web ágil. Complementariamente, se desarrolló una aplicación móvil orientada a consultas inmediatas de datos de vehículos y coberturas en tiempo real.</p>
+                    <h3>La Solución</h3>
+                    <p>Arquitectura desacoplada con API REST en Spring Boot, frontend web dinámico y app móvil en React Native para consultas de vehículos en tiempo real.</p>
 
                     <h3>Stack Utilizado</h3>
                     <div class="tech-tags">
                         <span class="tech-tag">Spring Boot</span>
                         <span class="tech-tag">Java</span>
                         <span class="tech-tag">MySQL</span>
-                        <span class="tech-tag">HTML5 / JavaScript</span>
-                        <span class="tech-tag">React Native / Expo</span>
-                        <span class="tech-tag">Linux VPS</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">React Native</span>
                     </div>
-
-                    <h3>Resultados Previstos</h3>
-                    <p>Acceso remoto seguro para operarios y clientes, eliminación de dependencias de red local/VPN, y tiempos de respuesta reducidos a milisegundos en búsquedas críticas de vehículos.</p>
                 </div>
 
-                <!-- Columna Derecha: Carrusel -->
+                <!-- CARROUSEL CORREGIDO -->
                 <div class="visual-showcase">
                     <div class="carousel-wrapper" id="carouselWrapper">
-                        <button class="carousel-btn prev-btn" id="prevBtn" onclick="moveSlide(-1)" aria-label="Anterior">&larr;</button>
+                        <button class="carousel-btn prev-btn" onclick="moveSlide(-1)">&larr;</button>
                         
                         <div class="carousel-slider" id="carouselSlider">
                             <div class="carousel-slide">
                                 <div class="screen-container">
                                     <div class="screen-topbar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
-                                    <img src="images/CapturaPrincipal.PNG" class="screen-img" alt="Panel Web de Gestión Principal">
+                                    <img src="images/CapturaPrincipal.PNG" class="screen-img" alt="Vista 1" onerror="this.src='https://via.placeholder.com/600x350/1e293b/38bdf8?text=CapturaPrincipal.PNG'">
                                 </div>
                             </div>
                             <div class="carousel-slide">
                                 <div class="screen-container">
                                     <div class="screen-topbar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
-                                    <img src="images/Captura.PNG" class="screen-img" alt="Vista Web Gestión de Datos 1">
+                                    <img src="images/Captura.PNG" class="screen-img" alt="Vista 2" onerror="this.src='https://via.placeholder.com/600x350/1e293b/38bdf8?text=Captura.PNG'">
                                 </div>
                             </div>
                             <div class="carousel-slide">
                                 <div class="screen-container">
                                     <div class="screen-topbar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
-                                    <img src="images/Captura2.PNG" class="screen-img" alt="Vista Web Gestión de Datos 2">
+                                    <img src="images/Captura2.PNG" class="screen-img" alt="Vista 3" onerror="this.src='https://via.placeholder.com/600x350/1e293b/38bdf8?text=Captura2.PNG'">
                                 </div>
                             </div>
                             <div class="carousel-slide">
                                 <div class="screen-container">
                                     <div class="screen-topbar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
-                                    <img src="images/Captura3.PNG" class="screen-img" alt="Vista Web Gestión de Datos 3">
+                                    <img src="images/Captura3.PNG" class="screen-img" alt="Vista 4" onerror="this.src='https://via.placeholder.com/600x350/1e293b/38bdf8?text=Captura3.PNG'">
                                 </div>
                             </div>
                             <div class="carousel-slide">
                                 <div class="screen-container">
                                     <div class="screen-topbar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
-                                    <img src="images/Captura4.PNG" class="screen-img" alt="Vista Web Gestión de Datos 4">
-                                </div>
-                            </div>
-                            <div class="carousel-slide">
-                                <div class="screen-container">
-                                    <div class="screen-topbar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
-                                    <img src="images/Captura5.PNG" class="screen-img" alt="Vista Web Gestión de Datos 5">
-                                </div>
-                            </div>
-                            <div class="carousel-slide">
-                                <div class="screen-container">
-                                    <div class="screen-topbar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
-                                    <img src="images/Captura6.PNG" class="screen-img" alt="Vista Web Gestión de Datos 6">
-                                </div>
-                            </div>
-                            <div class="carousel-slide">
-                                <div class="screen-container">
-                                    <div class="screen-topbar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
-                                    <img src="images/CapturaPrincipal.PNG" class="screen-img" alt="App Móvil Búsqueda de Vehículos">
+                                    <img src="images/Captura4.PNG" class="screen-img" alt="Vista 5" onerror="this.src='https://via.placeholder.com/600x350/1e293b/38bdf8?text=Captura4.PNG'">
                                 </div>
                             </div>
                         </div>
 
-                        <button class="carousel-btn next-btn" id="nextBtn" onclick="moveSlide(1)" aria-label="Siguiente">&rarr;</button>
+                        <button class="carousel-btn next-btn" onclick="moveSlide(1)">&rarr;</button>
                     </div>
 
                     <div class="carousel-dots" id="carouselDots"></div>
-                    <p class="privacy-note">* Los datos mostrados en las capturas son ficticios y anonimizados por motivos de confidencialidad.</p>
+                    <p class="privacy-note">* Datos de prueba anonimizados.</p>
                 </div>
             </div>
         </article>
     </main>
 
-    <!-- Banner CTA -->
     <section class="cta-section">
         <div class="container">
-            <div class="cta-content">
-                <h2>¿Tienes un sistema similar que necesitas llevar a la web?</h2>
-                <p>Analizamos la arquitectura de tu software actual y diseñamos una estrategia de migración a medida.</p>
-                <a href="contacto.html" class="btn" style="margin-top:20px;">Solicitar Diagnóstico Técnico</a>
-            </div>
+            <h2>¿Necesitas migrar tu software de escritorio?</h2>
+            <a href="contacto.html" class="btn" style="margin-top:14px;">Solicitar Diagnóstico</a>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <p>&copy; 2026 MateriaGris. Todos los derechos reservados.</p>
@@ -613,21 +507,21 @@
             dotsContainer = document.getElementById('carouselDots');
             slides = document.querySelectorAll('.carousel-slide');
 
+            if (!slider || slides.length === 0) return;
+
             dotsContainer.innerHTML = '';
             slides.forEach((_, index) => {
                 const dot = document.createElement('span');
                 dot.classList.add('dot-indicator');
                 if (index === 0) dot.classList.add('active');
-                dot.addEventListener('click', () => currentSlide(index));
+                dot.onclick = () => currentSlide(index);
                 dotsContainer.appendChild(dot);
             });
             updateCarousel();
         }
 
         function updateCarousel() {
-            if (!slider || slides.length === 0) return;
-            
-            // Movimiento relativo por porcentaje para evitar fallas por tamaño no cargado
+            if (!slider) return;
             slider.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
             
             const dots = document.querySelectorAll('.dot-indicator');
@@ -638,12 +532,7 @@
 
         function moveSlide(direction) {
             if (slides.length === 0) return;
-            currentSlideIndex += direction;
-            if (currentSlideIndex >= slides.length) {
-                currentSlideIndex = 0;
-            } else if (currentSlideIndex < 0) {
-                currentSlideIndex = slides.length - 1;
-            }
+            currentSlideIndex = (currentSlideIndex + direction + slides.length) % slides.length;
             updateCarousel();
         }
 
@@ -652,47 +541,24 @@
             updateCarousel();
         }
 
-        // Eventos táctiles
-        const carouselWrapper = document.getElementById('carouselWrapper');
-        let touchStartX = 0;
-        let touchEndX = 0;
+        // Eventos Táctiles para Móvil
+        const wrapper = document.getElementById('carouselWrapper');
+        let startX = 0;
 
-        if (carouselWrapper) {
-            carouselWrapper.addEventListener('touchstart', (e) => {
-                touchStartX = e.changedTouches[0].screenX;
-            }, { passive: true });
-
-            carouselWrapper.addEventListener('touchend', (e) => {
-                touchEndX = e.changedTouches[0].screenX;
-                if (touchStartX - touchEndX > 40) moveSlide(1);
-                if (touchEndX - touchStartX > 40) moveSlide(-1);
-            }, { passive: true });
+        if (wrapper) {
+            wrapper.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; }, {passive: true});
+            wrapper.addEventListener('touchend', (e) => {
+                let endX = e.changedTouches[0].clientX;
+                if (startX - endX > 40) moveSlide(1);
+                if (endX - startX > 40) moveSlide(-1);
+            }, {passive: true});
         }
 
-        // Navegación Menú Móvil
+        // Menú Móvil
         const menuToggle = document.getElementById('menuToggle');
         const navLinks = document.getElementById('navLinks');
-
         if (menuToggle && navLinks) {
-            menuToggle.addEventListener('click', (e) => {
-                e.stopPropagation();
-                navLinks.classList.toggle('active');
-                menuToggle.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
-            });
-
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.addEventListener('click', () => {
-                    navLinks.classList.remove('active');
-                    menuToggle.textContent = '☰';
-                });
-            });
-
-            document.addEventListener('click', (e) => {
-                if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
-                    navLinks.classList.remove('active');
-                    menuToggle.textContent = '☰';
-                }
-            });
+            menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
         }
 
         document.addEventListener('DOMContentLoaded', initCarousel);
