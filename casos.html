@@ -47,121 +47,114 @@
             padding: 0 24px;
         }
 
-        /* Header / Navbar */
-     /* Header / Navbar Corregido */
-header {
-    border-bottom: 1px solid var(--border);
-    padding: 12px 0;
-    position: sticky;
-    top: 0;
-    background-color: rgba(15, 23, 42, 0.95);
-    backdrop-filter: blur(8px);
-    z-index: 100;
-}
+        /* Header / Navbar Corregido */
+        header {
+            border-bottom: 1px solid var(--border);
+            padding: 12px 0;
+            position: sticky;
+            top: 0;
+            background-color: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(8px);
+            z-index: 100;
+        }
 
-.nav-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-}
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
 
-.logo-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-}
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
 
-.logo-container img {
-    height: 42px; /* Reducido ligeramente para evitar desbordes */
-    width: auto;
-    display: block;
-    transition: transform 0.3s ease, filter 0.3s ease;
-}
+        .logo-container img {
+            height: 42px;
+            width: auto;
+            display: block;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
 
-.brand-text {
-    font-size: 1.5rem;
-    font-weight: 800;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    letter-spacing: -0.5px;
-    background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-transform: uppercase;
-}
+        .brand-text {
+            font-size: 1.5rem;
+            font-weight: 800;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+        }
 
-/* Links de navegación */
-.nav-links {
-    display: flex;
-    gap: 18px;
-    align-items: center;
-    list-style: none;
-}
+        /* Links de navegación */
+        .nav-links {
+            display: flex;
+            gap: 18px;
+            align-items: center;
+            list-style: none;
+        }
 
-.nav-link {
-    color: var(--text-muted);
-    text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 500;
-    white-space: nowrap; /* Evita que el texto de cada link salte de línea */
-    transition: color 0.2s ease;
-}
-
-.nav-link:hover,
-.nav-link.active {
-    color: var(--accent);
-}
-
-/* Botón Hamburguesa para Mobile */
-.menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    color: var(--text-main);
-    font-size: 1.8rem;
-    cursor: pointer;
-    padding: 4px 8px;
-}
-
-/* Media Queries para Tablets y Móviles */
-@media (max-width: 900px) {
-    .menu-toggle {
-        display: block; /* Muestra el botón hamburguesa en móviles */
-    }
-
-    .nav-links {
-        display: none; /* Se oculta por defecto */
-        flex-direction: column;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background-color: var(--bg-card);
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        padding: 20px;
-        margin-top: 10px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-        gap: 16px;
-        align-items: flex-start;
-    }
-
-    /* Clase active para desplegar el menú desde JS */
-    .nav-links.active {
-        display: flex;
-    }
-
-    .nav-link {
-        font-size: 1rem;
-        width: 100%;
-        padding: 6px 0;
-    }
-}
+        .nav-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            white-space: nowrap;
+            transition: color 0.2s ease;
+        }
 
         .nav-link:hover,
         .nav-link.active {
             color: var(--accent);
+        }
+
+        /* Botón Hamburguesa para Mobile */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-main);
+            font-size: 1.8rem;
+            cursor: pointer;
+            padding: 4px 8px;
+        }
+
+        /* Media Queries para Tablets y Móviles */
+        @media (max-width: 900px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: var(--bg-card);
+                border: 1px solid var(--border);
+                border-radius: 12px;
+                padding: 20px;
+                margin-top: 10px;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+                gap: 16px;
+                align-items: flex-start;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-link {
+                font-size: 1rem;
+                width: 100%;
+                padding: 6px 0;
+            }
         }
 
         .btn {
@@ -428,34 +421,31 @@ header {
             .case-body {
                 grid-template-columns: 1fr;
             }
-            .nav-links { display: none; }
         }
     </style>
 </head>
 <body>
 
-    
-   <!-- Header Navigation -->
-<header>
-    <div class="container nav-wrapper">
-        <a href="index.html" class="logo-container">
-            <img src="logo-materiagris.png" alt="MateriaGris" width="150" height="42" />
-            <span class="brand-text">MateriaGris</span>
-        </a>
+    <!-- Header Navigation -->
+    <header>
+        <div class="container nav-wrapper">
+            <a href="index.html" class="logo-container">
+                <img src="logo-materiagris.png" alt="MateriaGris" width="150" height="42" />
+                <span class="brand-text">MateriaGris</span>
+            </a>
 
-        <!-- Botón para abir/cerrar menú en dispositivos móviles -->
-        <button class="menu-toggle" id="menuToggle" aria-label="Abrir Menú">☰</button>
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir Menú">☰</button>
 
-        <nav class="nav-links" id="navLinks">
-            <a href="index.html" class="nav-link">Inicio</a>
-            <a href="beneficios.html" class="nav-link">Beneficios</a>
-            <a href="stack.html" class="nav-link">Stack Tecnológico</a>
-            <a href="servicios.html" class="nav-link">Servicios</a>
-            <a href="casos.html" class="nav-link active">Casos de Éxito</a>
-            <a href="contacto.html" class="nav-link">Contacto</a>
-        </nav>
-    </div>
-</header>
+            <nav class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-link">Inicio</a>
+                <a href="beneficios.html" class="nav-link">Beneficios</a>
+                <a href="stack.html" class="nav-link">Stack Tecnológico</a>
+                <a href="servicios.html" class="nav-link">Servicios</a>
+                <a href="casos.html" class="nav-link active">Casos de Éxito</a>
+                <a href="contacto.html" class="nav-link">Contacto</a>
+            </nav>
+        </div>
+    </header>
 
     <!-- Main Content -->
     <main class="container">
@@ -501,10 +491,8 @@ header {
                 <!-- Columna Derecha: Galería / Carrusel de Capturas -->
                 <div class="visual-showcase">
                     <div class="carousel-wrapper" id="carouselWrapper">
-                        <!-- Flecha Izquierda -->
                         <button class="carousel-btn prev-btn" id="prevBtn" onclick="moveSlide(-1)" aria-label="Anterior">&larr;</button>
                         
-                        <!-- Contenedor de Pantallas -->
                         <div class="carousel-slider" id="carouselSlider">
                             <div class="carousel-slide">
                                 <div class="screen-container">
@@ -552,53 +540,14 @@ header {
                                 <div class="screen-container">
                                     <div class="screen-topbar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
                                     <img src="images/CapturaPrincipal.PNG" class="screen-img" alt="App Móvil Búsqueda de Vehículos">
-                                     <div class="carousel-slide">
-                                <div class="screen-container">
-                                    <div class="screen-topbar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
-                                    <img src="images/Captura.png" class="screen-img" alt="Vista Web Gestión de Datos 1">
-                                </div>
-                            </div>
-                            <div class="carousel-slide">
-                                <div class="screen-container">
-                                    <div class="screen-topbar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
-                                    <img src="images/Captura2.png" class="screen-img" alt="Vista Web Gestión de Datos 2">
-                                </div>
-                            </div>
-                            <div class="carousel-slide">
-                                <div class="screen-container">
-                                    <div class="screen-topbar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
-                                    <img src="images/Captura3.png" class="screen-img" alt="Vista Web Gestión de Datos 3">
-                                </div>
-                            </div>
-                            <div class="carousel-slide">
-                                <div class="screen-container">
-                                    <div class="screen-topbar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
-                                    <img src="images/Captura4.png" class="screen-img" alt="Vista Web Gestión de Datos 4">
-                                </div>
-                            </div>
-                            <div class="carousel-slide">
-                                <div class="screen-container">
-                                    <div class="screen-topbar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
-                                    <img src="images/Captura5.png" class="screen-img" alt="Vista Web Gestión de Datos 5">
-                                </div>
-                            </div>
-                            <div class="carousel-slide">
-                                <div class="screen-container">
-                                    <div class="screen-topbar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
-                                    <img src="images/Captura6.png" class="screen-img" alt="Vista Web Gestión de Datos 6">
-                                </div>
-                            </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Flecha Derecha -->
                         <button class="carousel-btn next-btn" id="nextBtn" onclick="moveSlide(1)" aria-label="Siguiente">&rarr;</button>
                     </div>
 
-                    <!-- Puntos de Navegación Dinámicos -->
                     <div class="carousel-dots" id="carouselDots"></div>
-
                     <p class="privacy-note">* Los datos mostrados en las capturas son ficticios y anonimizados por motivos de confidencialidad.</p>
                 </div>
             </div>
@@ -625,12 +574,15 @@ header {
 
     <script>
         let currentSlideIndex = 0;
-        const slides = document.querySelectorAll('.carousel-slide');
-        const slider = document.getElementById('carouselSlider');
-        const dotsContainer = document.getElementById('carouselDots');
+        let slides = [];
+        let slider;
+        let dotsContainer;
 
-        // Generar puntos dinámicamente según la cantidad real de diapositivas
-        function initDots() {
+        function initCarousel() {
+            slider = document.getElementById('carouselSlider');
+            dotsContainer = document.getElementById('carouselDots');
+            slides = document.querySelectorAll('.carousel-slide');
+
             dotsContainer.innerHTML = '';
             slides.forEach((_, index) => {
                 const dot = document.createElement('span');
@@ -639,9 +591,11 @@ header {
                 dot.addEventListener('click', () => currentSlide(index));
                 dotsContainer.appendChild(dot);
             });
+            updateCarousel();
         }
 
         function updateCarousel() {
+            if (!slider || slides.length === 0) return;
             slider.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
             const dots = document.querySelectorAll('.dot-indicator');
             dots.forEach((dot, index) => {
@@ -650,6 +604,7 @@ header {
         }
 
         function moveSlide(direction) {
+            if (slides.length === 0) return;
             currentSlideIndex += direction;
             if (currentSlideIndex >= slides.length) {
                 currentSlideIndex = 0;
@@ -664,40 +619,38 @@ header {
             updateCarousel();
         }
 
-        // Navegación por teclado (flechas izquierda/derecha)
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowLeft') moveSlide(-1);
             if (e.key === 'ArrowRight') moveSlide(1);
         });
 
-        // Soporte Swipe para móviles
+        const carouselWrapper = document.getElementById('carouselWrapper');
         let touchStartX = 0;
         let touchEndX = 0;
-        const carouselWrapper = document.getElementById('carouselWrapper');
 
-        carouselWrapper.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-        }, { passive: true });
+        if (carouselWrapper) {
+            carouselWrapper.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
 
-        carouselWrapper.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            if (touchStartX - touchEndX > 50) moveSlide(1);  // Swipe izquierda -> siguiente
-            if (touchEndX - touchStartX > 50) moveSlide(-1); // Swipe derecha -> anterior
-        }, { passive: true });
+            carouselWrapper.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                if (touchStartX - touchEndX > 50) moveSlide(1);
+                if (touchEndX - touchStartX > 50) moveSlide(-1);
+            }, { passive: true });
+        }
 
-        // Inicializar indicadores
-        initDots();
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
 
-        // Toggle del menú hamburguesa en mobile
-    const menuToggle = document.getElementById('menuToggle');
-    const navLinks = document.getElementById('navLinks');
+        if (menuToggle && navLinks) {
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                menuToggle.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+            });
+        }
 
-    if (menuToggle && navLinks) {
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            menuToggle.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
-        });
-    }
+        document.addEventListener('DOMContentLoaded', initCarousel);
     </script>
 </body>
 </html>
