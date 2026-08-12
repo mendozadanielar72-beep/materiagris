@@ -295,45 +295,111 @@
             font-size: 0.875rem;
         }
 
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
-            .hero p { font-size: 1rem; }
-            .section-title { font-size: 1.5rem; }
-            .nav-links { display: none; }
+        /* ==========================================
+           ADAPTACIÓN RESPONSIVE (Tablets y Celulares)
+           ========================================== */
+
+        /* Tablets y Pantallas Medianas (hasta 868px) */
+        @media (max-width: 868px) {
+            /* Header flexible y centrado */
+            .nav-wrapper {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .nav-links {
+                display: flex; /* Reactivamos los links ordenados */
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px 16px;
+            }
+
+            .nav-link {
+                font-size: 0.9rem;
+            }
+
+            /* Reducción de padding vertical general */
+            .hero {
+                padding: 56px 0 40px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section {
+                padding: 50px 0;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+                margin-bottom: 32px;
+            }
+
+            .case-box {
+                padding: 24px;
+            }
         }
 
-        /* CTA Final simplificado */
-.cta-section {
-    padding: 80px 0;
-    background: linear-gradient(135deg, var(--bg-card) 0%, #0f172a 100%);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    text-align: center;
-}
+        /* Celulares / Dispositivos Pequeños (hasta 480px) */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
 
-.cta-content {
-    max-width: 680px;
-    margin: 0 auto;
-}
+            .brand-text {
+                font-size: 1.4rem;
+            }
 
-.cta-content h2 {
-    font-size: 2.25rem;
-    font-weight: 700;
-    margin-bottom: 16px;
-    color: var(--text-main);
-}
+            .logo-container img {
+                height: 42px;
+            }
 
-.cta-content p {
-    color: var(--text-muted);
-    font-size: 1.15rem;
-    margin-bottom: 32px;
-    line-height: 1.6;
-}
+            .hero h1 {
+                font-size: 1.65rem;
+                line-height: 1.3;
+            }
 
-.btn-large {
-    padding: 14px 28px;
-    font-size: 1.05rem;
-}
+            .hero p {
+                font-size: 0.975rem;
+                margin-bottom: 24px;
+            }
+
+            /* Botones principales ocupan todo el ancho para fácil interacción */
+            .btn, 
+            .btn-large, 
+            .btn-outline {
+                display: block;
+                width: 100%;
+                text-align: center;
+            }
+
+            .grid-2x2, 
+            .process-steps {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+            .cta-section {
+                padding: 50px 0;
+            }
+
+            .cta-content h2 {
+                font-size: 1.6rem;
+            }
+
+            .cta-content p {
+                font-size: 0.95rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -350,6 +416,7 @@
             <a href="beneficios.html" class="nav-link">Beneficios</a>
             <a href="stack.html" class="nav-link">Stack Tecnológico</a>
             <a href="servicios.html" class="nav-link">Servicios</a>
+            <a href="casos.html" class="nav-link">Casos de Éxito</a>
             <a href="contacto.html" class="nav-link active">Contacto</a>
         </nav>
     </div>
@@ -438,15 +505,20 @@
         </div>
     </section>
 
-    <!-- Proof Section -->
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">Experiencia técnica comprobada en sistemas críticos</h2>
-            <div class="case-box">
-                <p>“Migración exitosa de un sistema integral de gestión de seguros desde arquitectura de escritorio a entorno web y móvil, manteniendo la integridad de las reglas del negocio, reduciendo tiempos de consulta y habilitando el acceso remoto seguro a bases de datos operativas.”</p>
-            </div>
+   <!-- Proof Section -->
+<section class="section">
+    <div class="container">
+        <h2 class="section-title">Experiencia técnica en proyectos reales</h2>
+        <div class="case-box">
+            <span class="step-number" style="margin-bottom: 12px;">Caso de Estudio Destacado</span>
+            <h3 style="color: var(--text-main); font-size: 1.3rem; margin-bottom: 8px;">Migración de Sistema de Seguros & App Móvil</h3>
+            <p style="font-style: normal; font-size: 1rem; color: var(--text-muted); margin-bottom: 20px;">
+                Modernización integral de una plataforma legacy de gestión de pólizas a arquitectura web en Spring Boot, sumada a una app móvil para consulta en tiempo real de datos de vehículos.
+            </p>
+            <a href="casos.html" class="btn btn-outline">Ver Ultimo Trabajo Completo &rarr;</a>
         </div>
-    </section>
+    </div>
+</section>
 
    <!-- Banner CTA a Contacto -->
 <section class="cta-section">

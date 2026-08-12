@@ -40,70 +40,115 @@
         }
 
         /* Header / Navbar */
-        header {
-            border-bottom: 1px solid var(--border);
-            padding: 12px 0;
-            position: sticky;
-            top: 0;
-            background-color: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(8px);
-            z-index: 100;
-        }
+      /* Header / Navbar Corregido */
+header {
+    border-bottom: 1px solid var(--border);
+    padding: 12px 0;
+    position: sticky;
+    top: 0;
+    background-color: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(8px);
+    z-index: 100;
+}
 
-        .nav-wrapper {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+.nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
 
-       /* Asegura que el logo y el texto se alienen horizontalmente y centrados */
 .logo-container {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     text-decoration: none;
 }
 
-/* Estilo llamativo para el texto MateriaGris */
+.logo-container img {
+    height: 42px;
+    width: auto;
+    display: block;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
 .brand-text {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     font-weight: 800;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     letter-spacing: -0.5px;
-    /* Degradado llamativo (puedes ajustar los colores según tu paleta) */
     background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-transform: uppercase;
 }
 
-        .logo-container img {
-            height: 56px;
-            width: auto;
-            display: block;
-            transition: transform 0.3s ease, filter 0.3s ease;
-        }
+/* Links de navegación */
+.nav-links {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    list-style: none;
+}
 
-        .logo-container:hover img {
-            transform: scale(1.05);
-            filter: drop-shadow(0 0 12px rgba(56, 189, 248, 0.5));
-        }
+.nav-link {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: color 0.2s ease;
+}
 
-        .nav-links {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-        }
+.nav-link:hover,
+.nav-link.active {
+    color: var(--accent);
+}
 
-        .nav-link {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: color 0.2s ease;
-        }
+/* Botón Hamburguesa para Mobile */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-main);
+    font-size: 1.8rem;
+    cursor: pointer;
+    padding: 4px 8px;
+}
 
-        .nav-link:hover, .nav-link.active { color: var(--accent); }
+/* Media Queries para Tablets y Móviles */
+@media (max-width: 900px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 20px;
+        margin-top: 10px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        gap: 16px;
+        align-items: flex-start;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-link {
+        font-size: 1rem;
+        width: 100%;
+        padding: 6px 0;
+    }
+}
 
         .btn {
             display: inline-block;
@@ -228,6 +273,13 @@
             color: var(--accent);
         }
 
+        .form-status.error {
+            display: block;
+            background-color: rgba(239, 68, 68, 0.1);
+            border: 1px solid #ef4444;
+            color: #f87171;
+        }
+
         footer {
             padding: 32px 0;
             text-align: center;
@@ -245,17 +297,23 @@
 </head>
 <body>
 
-   <header>
+   <!-- Header Navigation -->
+<header>
     <div class="container nav-wrapper">
         <a href="index.html" class="logo-container">
-            <img src="logo-materiagris.png" alt="MateriaGris" width="200" height="80" />
+            <img src="logo-materiagris.png" alt="MateriaGris" width="150" height="42" />
             <span class="brand-text">MateriaGris</span>
         </a>
-        <nav class="nav-links">
+
+        <!-- Botón para abrir/cerrar menú en dispositivos móviles -->
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir Menú">☰</button>
+
+        <nav class="nav-links" id="navLinks">
             <a href="index.html" class="nav-link">Inicio</a>
             <a href="beneficios.html" class="nav-link">Beneficios</a>
             <a href="stack.html" class="nav-link">Stack Tecnológico</a>
             <a href="servicios.html" class="nav-link">Servicios</a>
+            <a href="casos.html" class="nav-link">Casos de Éxito</a>
             <a href="contacto.html" class="nav-link active">Contacto</a>
         </nav>
     </div>
@@ -269,12 +327,14 @@
             </div>
 
             <div class="contact-form-wrapper">
-                <form id="contact-form" action="https://formspree.io/f/mnpajgap" method="POST"></form>
-                    <!-- Cambia el asunto del correo que recibís -->
-<input type="hidden" name="_subject" value="Nuevo Diagnóstico Solicitado - MateriaGris">
+                <form id="contact-form" action="https://formspree.io/f/mnpajgap" method="POST">
+                    
+                    <!-- Asunto del correo remitido por Formspree -->
+                    <input type="hidden" name="_subject" value="Nuevo Diagnóstico Solicitado - MateriaGris">
 
-<!-- Previene el spam de bots con un campo Honeypot -->
-<input type="text" name="_gotcha" style="display:none">
+                    <!-- Campo Honeypot para evitar spam -->
+                    <input type="text" name="_gotcha" style="display:none">
+
                     <div class="form-row">
                         <div class="form-group">
                             <label class="form-label" for="nombre">Nombre y Apellido *</label>
@@ -307,7 +367,6 @@
                                 <option value="Colombia">Colombia</option>
                                 <option value="España">España</option>
                                 <option value="México">México</option>
-
                                 <option value="Perú">Perú</option>
                                 <option value="Uruguay">Uruguay</option>
                                 <option value="Otro">Otro país</option>
@@ -342,45 +401,59 @@
             <p>&copy; 2026 MateriaGris. Todos los derechos reservados.</p>
         </div>
     </footer>
-<script>
-    const form = document.getElementById('contact-form');
-const statusDiv = document.getElementById('form-status');
 
-async function handleContactForm(event) {
-    event.preventDefault();
-    const data = new FormData(event.target);
+    <script>
+        const form = document.getElementById('contact-form');
+        const statusDiv = document.getElementById('form-status');
 
-    statusDiv.style.display = 'block';
-    statusDiv.className = 'form-status';
-    statusDiv.innerHTML = 'Enviando consulta...';
+        async function handleContactForm(event) {
+            event.preventDefault();
+            const data = new FormData(event.target);
 
-    try {
-        const response = await fetch(event.target.action, {
-            method: form.method,
-            body: data,
-            headers: {
-                'Accept': 'application/json'
-            }
-        });
+            statusDiv.style.display = 'block';
+            statusDiv.className = 'form-status';
+            statusDiv.innerHTML = 'Enviando consulta...';
 
-        if (response.ok) {
-            statusDiv.className = 'form-status success';
-            statusDiv.innerHTML = '✔ ¡Solicitud recibida correctamente! Nos pondremos en contacto a la brevedad.';
-            form.reset();
-        } else {
-            const data = await response.json();
-            if (Object.hasOwn(data, 'errors')) {
-                statusDiv.innerHTML = data["errors"].map(error => error["message"]).join(", ");
-            } else {
-                statusDiv.innerHTML = '❌ Ocurrió un problema al enviar el formulario. Inténtalo nuevamente.';
+            try {
+                const response = await fetch(event.target.action, {
+                    method: form.method,
+                    body: data,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    statusDiv.className = 'form-status success';
+                    statusDiv.innerHTML = '✔ ¡Solicitud recibida correctamente! Nos pondremos en contacto a la brevedad.';
+                    form.reset();
+                } else {
+                    const dataResp = await response.json();
+                    statusDiv.className = 'form-status error';
+                    if (Object.hasOwn(dataResp, 'errors')) {
+                        statusDiv.innerHTML = dataResp["errors"].map(error => error["message"]).join(", ");
+                    } else {
+                        statusDiv.innerHTML = '❌ Ocurrió un problema al enviar el formulario. Inténtalo nuevamente.';
+                    }
+                }
+            } catch (error) {
+                statusDiv.className = 'form-status error';
+                statusDiv.innerHTML = '❌ Error de conexión. Verificá tu red e intentalo más tarde.';
             }
         }
-    } catch (error) {
-        statusDiv.innerHTML = '❌ Error de conexión. Verificá tu red e intentalo más tarde.';
-    }
-}
 
-form.addEventListener("submit", handleContactForm);
-</script>
+        form.addEventListener("submit", handleContactForm);
+
+        // Toggle del menú hamburguesa en mobile
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+        });
+    }
+    </script>
 </body>
 </html>

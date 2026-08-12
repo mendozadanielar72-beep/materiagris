@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casos de Estudio - MateriaGris</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="logo-materiagris.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg-main: #0f172a;
+            --bg-card: #1e293b;
+            --bg-card-hover: #2a3a52;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+            --border: #334155;
+            --max-width: 1140px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header / Navbar */
+     /* Header / Navbar Corregido */
+header {
+    border-bottom: 1px solid var(--border);
+    padding: 12px 0;
+    position: sticky;
+    top: 0;
+    background-color: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(8px);
+    z-index: 100;
+}
+
+.nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.logo-container img {
+    height: 42px; /* Reducido ligeramente para evitar desbordes */
+    width: auto;
+    display: block;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.brand-text {
+    font-size: 1.5rem;
+    font-weight: 800;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    letter-spacing: -0.5px;
+    background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+}
+
+/* Links de navegación */
+.nav-links {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    list-style: none;
+}
+
+.nav-link {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    white-space: nowrap; /* Evita que el texto de cada link salte de línea */
+    transition: color 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--accent);
+}
+
+/* Botón Hamburguesa para Mobile */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-main);
+    font-size: 1.8rem;
+    cursor: pointer;
+    padding: 4px 8px;
+}
+
+/* Media Queries para Tablets y Móviles */
+@media (max-width: 900px) {
+    .menu-toggle {
+        display: block; /* Muestra el botón hamburguesa en móviles */
+    }
+
+    .nav-links {
+        display: none; /* Se oculta por defecto */
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 20px;
+        margin-top: 10px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        gap: 16px;
+        align-items: flex-start;
+    }
+
+    /* Clase active para desplegar el menú desde JS */
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-link {
+        font-size: 1rem;
+        width: 100%;
+        padding: 6px 0;
+    }
+}
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--accent);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+
+        /* Hero Casos */
+        .page-header {
+            padding: 80px 0 40px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .page-header p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Case Detail Card */
+        .case-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 64px;
+        }
+
+        .case-header {
+            padding: 32px 32px 16px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .badge-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #38bdf8;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            padding: 6px 14px;
+            border-radius: 20px;
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--accent);
+        }
+
+        .case-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-top: 8px;
+            color: var(--text-main);
+        }
+
+        .case-body {
+            padding: 32px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+        }
+
+        .case-info h3 {
+            font-size: 1.1rem;
+            color: var(--accent);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .case-info p {
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            font-size: 0.975rem;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .tech-tag {
+            background-color: #0f172a;
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* Mockup / Screenshots Grid */
+        .visual-showcase {
+            background-color: #0f172a;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .screen-container {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: var(--bg-card);
+        }
+
+        .screen-topbar {
+            background-color: #1e293b;
+            padding: 8px 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #334155;
+        }
+
+        .screen-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        .privacy-note {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-style: italic;
+            text-align: center;
+            margin-top: 8px;
+        }
+
+        /* Carrusel de Capturas */
+        .carousel-wrapper {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .carousel-slider {
+            display: flex;
+            transition: transform 0.4s ease-in-out;
+            width: 100%;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Botones de Flecha */
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(15, 23, 42, 0.85);
+            border: 1px solid var(--border);
+            color: var(--accent);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-btn:hover {
+            background-color: var(--accent);
+            color: #0f172a;
+            box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+        }
+
+        .prev-btn { left: 10px; }
+        .next-btn { right: 10px; }
+
+        /* Indicadores de Puntos */
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+
+        .dot-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--border);
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .dot-indicator.active,
+        .dot-indicator:hover {
+            background-color: var(--accent);
+            transform: scale(1.2);
+        }
+
+        /* Footer & CTA */
+        .cta-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--bg-card) 0%, #0f172a 100%);
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        footer {
+            padding: 32px 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            border-top: 1px solid var(--border);
+        }
+
+        @media (max-width: 868px) {
+            .case-body {
+                grid-template-columns: 1fr;
+            }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    
+   <!-- Header Navigation -->
+<header>
+    <div class="container nav-wrapper">
+        <a href="index.html" class="logo-container">
+            <img src="logo-materiagris.png" alt="MateriaGris" width="150" height="42" />
+            <span class="brand-text">MateriaGris</span>
+        </a>
+
+        <!-- Botón para abir/cerrar menú en dispositivos móviles -->
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir Menú">☰</button>
+
+        <nav class="nav-links" id="navLinks">
+            <a href="index.html" class="nav-link">Inicio</a>
+            <a href="beneficios.html" class="nav-link">Beneficios</a>
+            <a href="stack.html" class="nav-link">Stack Tecnológico</a>
+            <a href="servicios.html" class="nav-link">Servicios</a>
+            <a href="casos.html" class="nav-link active">Casos de Éxito</a>
+            <a href="contacto.html" class="nav-link">Contacto</a>
+        </nav>
+    </div>
+</header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <section class="page-header">
+            <h1>Casos de Estudio & Proyectos</h1>
+            <p>Conoce de cerca cómo transformamos aplicaciones de escritorio tradicionales en soluciones web y móviles de alto rendimiento.</p>
+        </section>
+
+        <!-- Case Study Card -->
+        <article class="case-card">
+            <div class="case-header">
+                <div>
+                    <span class="badge-status">
+                        <span class="pulse-dot"></span> Proyecto en Desarrollo / Fase Final
+                    </span>
+                    <h2 class="case-title">Modernización de Sistema de Gestión de Seguros & App Móvil</h2>
+                </div>
+            </div>
+
+            <div class="case-body">
+                <!-- Columna Izquierda: Arquitectura y Desafío -->
+                <div class="case-info">
+                    <h3>El Desafío Técnico</h3>
+                    <p>Migrar un sistema de escritorio integral de seguros a un entorno web accesible desde navegador y dispositivo móvil. El reto principal consistía en conservar las complejas reglas del negocio y permitir consultas veloces a una base de datos relacional de gran volumen sin interrumpir la operación.</p>
+
+                    <h3>La Solución Integrada</h3>
+                    <p>Diseño de una arquitectura limpia separando el backend mediante una API REST en Spring Boot y un frontend web ágil. Complementariamente, se desarrolló una aplicación móvil orientada a consultas inmediatas de datos de vehículos y coberturas en tiempo real.</p>
+
+                    <h3>Stack Utilizado</h3>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Spring Boot</span>
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">MySQL</span>
+                        <span class="tech-tag">HTML5 / JavaScript</span>
+                        <span class="tech-tag">React Native / Expo</span>
+                        <span class="tech-tag">Linux VPS</span>
+                    </div>
+
+                    <h3>Resultados Previstos</h3>
+                    <p>Acceso remoto seguro para operarios y clientes, eliminación de dependencias de red local/VPN, y tiempos de respuesta reducidos a milisegundos en búsquedas críticas de vehículos.</p>
+                </div>
+
+                <!-- Columna Derecha: Galería / Carrusel de Capturas -->
+                <div class="visual-showcase">
+                    <div class="carousel-wrapper" id="carouselWrapper">
+                        <!-- Flecha Izquierda -->
+                        <button class="carousel-btn prev-btn" id="prevBtn" onclick="moveSlide(-1)" aria-label="Anterior">&larr;</button>
+                        
+                        <!-- Contenedor de Pantallas -->
+                        <div class="carousel-slider" id="carouselSlider">
+                            <div class="carousel-slide">
+                                <div class="screen-container">
+                                    <div class="screen-topbar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+                                    <img src="images/CapturaPrincipal.png" class="screen-img" alt="Panel Web de Gestión Principal">
+                                </div>
+                            </div>
+                            <div class="carousel-slide">
+                                <div class="screen-container">
+                                    <div class="screen-topbar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+                                    <img src="images/Captura.png" class="screen-img" alt="Vista Web Gestión de Datos 1">
+                                </div>
+                            </div>
+                            <div class="carousel-slide">
+                                <div class="screen-container">
+                                    <div class="screen-topbar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+                                    <img src="images/Captura2.png" class="screen-img" alt="Vista Web Gestión de Datos 2">
+                                </div>
+                            </div>
+                            <div class="carousel-slide">
+                                <div class="screen-container">
+                                    <div class="screen-topbar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+                                    <img src="images/Captura3.png" class="screen-img" alt="Vista Web Gestión de Datos 3">
+                                </div>
+                            </div>
+                            <div class="carousel-slide">
+                                <div class="screen-container">
+                                    <div class="screen-topbar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+                                    <img src="images/Captura4.png" class="screen-img" alt="Vista Web Gestión de Datos 4">
+                                </div>
+                            </div>
+                            <div class="carousel-slide">
+                                <div class="screen-container">
+                                    <div class="screen-topbar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+                                    <img src="images/Captura5.png" class="screen-img" alt="Vista Web Gestión de Datos 5">
+                                </div>
+                            </div>
+                            <div class="carousel-slide">
+                                <div class="screen-container">
+                                    <div class="screen-topbar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+                                    <img src="images/Captura6.png" class="screen-img" alt="Vista Web Gestión de Datos 6">
+                                </div>
+                            </div>
+                            <div class="carousel-slide">
+                                <div class="screen-container">
+                                    <div class="screen-topbar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+                                    <img src="images/CapturaPrincipal.PNG" class="screen-img" alt="App Móvil Búsqueda de Vehículos">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Flecha Derecha -->
+                        <button class="carousel-btn next-btn" id="nextBtn" onclick="moveSlide(1)" aria-label="Siguiente">&rarr;</button>
+                    </div>
+
+                    <!-- Puntos de Navegación Dinámicos -->
+                    <div class="carousel-dots" id="carouselDots"></div>
+
+                    <p class="privacy-note">* Los datos mostrados en las capturas son ficticios y anonimizados por motivos de confidencialidad.</p>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <!-- Banner CTA a Contacto -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>¿Tienes un sistema similar que necesitas llevar a la web?</h2>
+                <p>Analizamos la arquitectura de tu software actual y diseñamos una estrategia de migración a medida.</p>
+                <a href="contacto.html" class="btn" style="margin-top:20px;">Solicitar Diagnóstico Técnico</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 MateriaGris. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const slider = document.getElementById('carouselSlider');
+        const dotsContainer = document.getElementById('carouselDots');
+
+        // Generar puntos dinámicamente según la cantidad real de diapositivas
+        function initDots() {
+            dotsContainer.innerHTML = '';
+            slides.forEach((_, index) => {
+                const dot = document.createElement('span');
+                dot.classList.add('dot-indicator');
+                if (index === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => currentSlide(index));
+                dotsContainer.appendChild(dot);
+            });
+        }
+
+        function updateCarousel() {
+            slider.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
+            const dots = document.querySelectorAll('.dot-indicator');
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlideIndex);
+            });
+        }
+
+        function moveSlide(direction) {
+            currentSlideIndex += direction;
+            if (currentSlideIndex >= slides.length) {
+                currentSlideIndex = 0;
+            } else if (currentSlideIndex < 0) {
+                currentSlideIndex = slides.length - 1;
+            }
+            updateCarousel();
+        }
+
+        function currentSlide(index) {
+            currentSlideIndex = index;
+            updateCarousel();
+        }
+
+        // Navegación por teclado (flechas izquierda/derecha)
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') moveSlide(-1);
+            if (e.key === 'ArrowRight') moveSlide(1);
+        });
+
+        // Soporte Swipe para móviles
+        let touchStartX = 0;
+        let touchEndX = 0;
+        const carouselWrapper = document.getElementById('carouselWrapper');
+
+        carouselWrapper.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        carouselWrapper.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            if (touchStartX - touchEndX > 50) moveSlide(1);  // Swipe izquierda -> siguiente
+            if (touchEndX - touchStartX > 50) moveSlide(-1); // Swipe derecha -> anterior
+        }, { passive: true });
+
+        // Inicializar indicadores
+        initDots();
+
+        // Toggle del menú hamburguesa en mobile
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+        });
+    }
+    </script>
+</body>
+</html>
