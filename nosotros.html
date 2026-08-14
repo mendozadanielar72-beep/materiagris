@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nosotros - MateriaGris</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="logo-materiagris.png">
+    
+    <!-- Preload del logo -->
+    <link rel="preload" as="image" href="logo-materiagris.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg-main: #0f172a;
+            --bg-card: #1e293b;
+            --bg-card-hover: #2a3a52;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+            --border: #334155;
+            --max-width: 1140px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header / Navbar */
+        header {
+            border-bottom: 1px solid var(--border);
+            padding: 12px 0;
+            position: sticky;
+            top: 0;
+            background-color: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(8px);
+            z-index: 100;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .brand-text {
+            font-size: 1.8rem;
+            font-weight: 800;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+        }
+
+        .logo-container img {
+            height: 56px;
+            width: auto;
+            display: block;
+            image-rendering: -webkit-optimize-contrast;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .logo-container:hover img {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 12px rgba(56, 189, 248, 0.5));
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--accent);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(56, 189, 248, 0.1);
+            color: #ffffff;
+        }
+
+        .btn-linkedin {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: #0a66c2;
+            color: #ffffff;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            margin-top: 16px;
+        }
+
+        .btn-linkedin:hover {
+            background-color: #084e96;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(10, 102, 194, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0 48px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.75rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 780px;
+            margin: 0 auto;
+        }
+
+        /* Profile Section */
+        .section {
+            padding: 64px 0 80px;
+            border-top: 1px solid var(--border);
+        }
+
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 48px;
+            align-items: start;
+            background-color: var(--bg-card);
+            border: 2px solid var(--border);
+            padding: 40px;
+            border-radius: 16px;
+        }
+
+        .profile-card {
+            text-align: center;
+        }
+
+        .profile-img-wrapper {
+            width: 220px;
+            height: 220px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            padding: 4px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+            box-shadow: 0 8px 24px rgba(56, 189, 248, 0.25);
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            background-color: #0f172a;
+        }
+
+        .profile-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 4px;
+        }
+
+        .profile-role {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+        }
+
+        .profile-bio h2 {
+            font-size: 1.8rem;
+            margin-bottom: 16px;
+            color: var(--text-main);
+        }
+
+        .profile-bio p {
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            font-size: 1.05rem;
+        }
+
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 24px;
+        }
+
+        .tag {
+            background-color: rgba(56, 189, 248, 0.1);
+            color: var(--accent);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Pillars Section */
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 48px;
+        }
+
+        .pillar-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 28px;
+            border-radius: 12px;
+        }
+
+        .pillar-card h3 {
+            color: var(--accent);
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+        }
+
+        .pillar-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Footer CTA */
+        .cta-section {
+            text-align: center;
+            padding: 80px 0;
+            background-color: var(--bg-card);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .cta-section h2 {
+            font-size: 2.25rem;
+            margin-bottom: 16px;
+        }
+
+        .cta-section p {
+            color: var(--text-muted);
+            margin-bottom: 32px;
+            font-size: 1.1rem;
+        }
+
+        footer {
+            padding: 32px 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+       /* ==========================================
+   ADAPTACIÓN RESPONSIVE (Tablets y Celulares)
+   ========================================== */
+
+/* Tablets y Pantallas Medianas (hasta 868px) */
+@media (max-width: 868px) {
+    /* Header en columna centrada */
+    .nav-wrapper {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px 14px;
+    }
+
+    .hero {
+        padding: 56px 0 32px;
+    }
+
+    .hero h1 {
+        font-size: 2.1rem;
+    }
+
+    /* Cambio de grilla a 1 sola columna */
+    .profile-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+        padding: 32px 24px;
+    }
+
+    .profile-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .pillars-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+}
+
+/* Celulares / Dispositivos Pequeños (hasta 480px) */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 16px;
+    }
+
+    .brand-text {
+        font-size: 1.4rem;
+    }
+
+    .hero h1 {
+        font-size: 1.65rem;
+        line-height: 1.3;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    /* Reducción proporcional de la foto en celulares */
+    .profile-img-wrapper {
+        width: 160px;
+        height: 160px;
+    }
+
+    .profile-name {
+        font-size: 1.35rem;
+    }
+
+    .profile-bio h2 {
+        font-size: 1.4rem;
+        text-align: center;
+    }
+
+    .profile-bio p {
+        font-size: 0.975rem;
+    }
+
+    /* Etiquetas de tecnología ajustadas al centro */
+    .tag-list {
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .tag {
+        font-size: 0.8rem;
+        padding: 5px 10px;
+    }
+
+    /* Botones principales y de LinkedIn a 100% de ancho */
+    .btn, 
+    .btn-outline, 
+    .btn-linkedin {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+        padding: 12px 16px;
+    }
+}
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="container nav-wrapper">
+            <a href="index.html" class="logo-container">
+                <img src="logo-materiagris.png" alt="MateriaGris" width="200" height="80" />
+                <span class="brand-text">MateriaGris</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-link">Inicio</a>
+                <a href="beneficios.html" class="nav-link">Beneficios</a>
+                <a href="stack.html" class="nav-link">Stack Tecnológico</a>
+                <a href="servicios.html" class="nav-link">Servicios</a>
+                <a href="casos.html" class="nav-link">Casos de Éxito</a>
+                <a href="contacto.html" class="nav-link">Contacto</a>
+                <a href="nosotros.html" class="nav-link active">Nosotros</a>
+                
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Ingeniería de Software con Liderazgo Técnico y Transparencia</h1>
+            <p>Conoce al equipo detrás de MateriaGris y la experiencia profesional que respalda cada uno de nuestros procesos de modernización tecnológica.</p>
+        </div>
+    </section>
+
+    <!-- Founder Profile Section -->
+    <section class="section">
+        <div class="container">
+            <div class="profile-grid">
+                
+                <!-- Columna Izquierda: Foto y LinkedIn -->
+                <div class="profile-card">
+                    <div class="profile-img-wrapper">
+                        <!-- Coloca la imagen del socio en la misma carpeta -->
+                        <img src="foto1.PNG" alt="Daniel Mendoza - Socio Fundador de MateriaGris" class="profile-img" />
+                    </div>
+                    <h2 class="profile-name">Daniel</h2>
+                    <p class="profile-role">Socio Fundador & Lead Architect</p>
+                    
+                    <a href="https://www.linkedin.com/in/daniel-mendoza-9948751a3/" target="_blank" rel="noopener noreferrer" class="btn-linkedin">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+                        </svg>
+                        Ver Perfil en LinkedIn
+                    </a>
+                </div>
+
+                <!-- Columna Derecha: Bio y Propuesta de Valor -->
+                <div class="profile-bio">
+                    <h2>Compromiso técnico directo y sin intermediarios</h2>
+                    <p>
+                        Con años de experiencia especializándome en el diseño, desarrollo y migración de sistemas empresariales de misión crítica, fundé <strong>MateriaGris</strong> para ofrecer una alternativa ágil, segura y técnicamente rigurosa a las empresas de la región.
+                    </p>
+                    <p>
+                        Entiendo los desafíos operativos que representan las plataformas <em>legacy</em> y los entornos de escritorio. Mi enfoque se centra en garantizar transiciones limpias hacia arquitecturas web modernas, preservando la integridad histórica de tus datos y optimizando las reglas de negocio esenciales.
+                    </p>
+                    <p>
+                        Para nuestros clientes en Chile y el resto de Latinoamérica, aseguro una comunicación directa, cumplimiento estricto de los hitos del proyecto y una arquitectura lista para escalar.
+                    </p>
+
+                    <div class="tag-list">
+                        <span class="tag">Java & Spring Boot</span>
+                        <span class="tag">Bases de Datos Relacionales</span>
+                        <span class="tag">Arquitectura Web</span>
+                        <span class="tag">Migración de Datos Legacy</span>
+                        <span class="tag">Despliegue VPS Linux</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Valores / Pilares -->
+            <div class="pillars-grid">
+                <div class="pillar-card">
+                    <h3>Trato Directo con Especialistas</h3>
+                    <p>Sin gestores intermedios. Dialogas directamente con quienes diseñan e implementan el código de tu plataforma.</p>
+                </div>
+                <div class="pillar-card">
+                    <h3>Atención a la Región</h3>
+                    <p>Operamos adaptados a las normativas, horarios y requerimientos específicos del mercado latinoamericano.</p>
+                </div>
+                <div class="pillar-card">
+                    <h3>Auditoría de Datos Segura</h3>
+                    <p>Tratamiento riguroso y confidencial de la información contable, operativa y comercial de tu compañía.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Banner CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>¿Querés evaluar la factibilidad de tu proyecto con nosotros?</h2>
+            <p>Agendemos una llamada para analizar la arquitectura actual de tu sistema y definir un plan de trabajo claro.</p>
+            <a href="contacto.html" class="btn">Solicitar Reunión Técnica</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 MateriaGris. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
